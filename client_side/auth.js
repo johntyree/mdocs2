@@ -10,7 +10,7 @@ var widget = new Auth0Widget({
   callbackOnLocationHash: true
 });
 
-if (store.get('profile')) {
+if (store.get('profile') && !window.location.hash) {
   window.location.hash = '#/docs';
 }
 
