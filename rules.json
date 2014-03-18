@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "docs": {
+      "$doc": {
+        ".read":  "auth != null && data.child('owners').hasChildren([auth.user_id])",
+        ".write": "auth != null && (!data.exists() || data.child('owners').child(auth.user_id).child('can_write').val() == true)",
+        "owners": {
+          "$user": {
+            ".validate": "(!data.parent().exists() && $user == auth.user_id) || data.parent().child(auth.user_id).child('can_write').val() == true"
+          }
+        }
+      }
+    },
+    "users": {
+      "$user": {
+        ".write": "$user == auth.user_id",
+        ".read": "$user == auth.user_id"
+      }
+    }
+  }
+}
