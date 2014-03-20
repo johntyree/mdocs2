@@ -41,16 +41,10 @@ function setup_editor (docRef) {
 
   var previous_text;
 
-  if (previewer) clearInterval(previewer);
-
-  previewer = setInterval(function update_preview() {
-    var text = firepad.getText();
-    if (previous_text && text.length === previous_text.length && text === previous_text){
-      return;
-    }
+  codeMirror.on('change', function () {
+    var text = codeMirror.getValue();
     $('#preview').html(marked(text));
-    previous_text = text;
-  }, 1000);
+  });
 
   title_editor.setup(docRef);
 }
