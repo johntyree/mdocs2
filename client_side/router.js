@@ -5,19 +5,29 @@ var auth = require('./auth');
 var docs_list = require('./docs_list');
 var editor = require('./editor');
 
-function hide_all_sections () {
-  $('section').hide();
+function clean_content () {
+  $('.content').html('');
+  $('a.share').hide();
+}
+
+function set_active_menu() {
+  $('.menu-button').removeClass('active');
+  $('li[data-menu-route="' + window.location.hash + '"]')
+    .addClass('active');
 }
 
 var routes = {
-  '/': [hide_all_sections, function () {
-      $('.login-page').show();
-  }],
+  '/': clean_content,
   '/login':  auth.login,
   '/logout': auth.logout,
-  '/docs': [ hide_all_sections, docs_list.load ],
-  '/docs/:docId': [ hide_all_sections, editor.load ]
+  '/docs': [ clean_content, docs_list.load ],
+  '/new': docs_list.create_new,
+  '/docs/:docId': [ clean_content, editor.load ]
 };
 
 var router = Router(routes);
+router.configure({
+  on: set_active_menu
+});
+
 router.init();

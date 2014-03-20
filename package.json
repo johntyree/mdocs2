@@ -2,13 +2,16 @@
   "name": "mdocs2",
   "version": "0.0.0",
   "description": "",
-  "dependencies": {
+  "devDependencies": {
+    "jadeify": "~2.1.1",
+    "marked": "~0.3.2",
+    "serve": "git+https://github.com/jfromaniello/serve.git",
+    "firepad": "git+https://github.com/jfromaniello/firepad.git#commonjs-support",
     "auth0-widget.js": "~2.6.3",
     "browserify-shim": "~3.3.1",
     "browserify": "~3.32.1",
     "browserify-middleware": "~2.4.0",
     "express": "~3.4.8",
-    "firepad": "git+https://github.com/jfromaniello/firepad.git#commonjs-support",
     "jade": "~1.3.0",
     "xtend": "~2.1.2",
     "store": "~1.3.14",
@@ -16,13 +19,14 @@
     "brfs": "~1.0.0",
     "ejsify": "0.0.2",
     "code-mirror": "~3.22.0",
-    "director": "~1.2.3"
+    "director": "~1.2.3",
+    "font-awesome": "~4.0.3",
+    "watchify": "~0.6.2",
+    "editable": "~0.1.0",
+    "css-import": "0.0.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "rm -rf public/css/app.css && stylus < public/css/app.styl > public/css/app.css"
+    "start": "watchify client_side/index.js -t jadeify -d -o main.js -v & serve"
   },
   "repository": "",
   "author": "",

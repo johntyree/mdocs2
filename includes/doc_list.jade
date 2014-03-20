@@ -1,0 +1,17 @@
+.container-fluid
+  table.table.mydocs-table
+    thead
+      tr
+        th Name
+        th(style="width: 30%;") In
+        th(style="width: 20%;") Last access
+        th
+    tbody
+      each doc in docs
+        tr(data-docid=doc.doc_id)
+          th
+            a(href='#/docs/' + doc.doc_id)= doc.title || 'untitled'
+          //- th= moment(doc.lastAccess).fromNow()
+          //- th
+          //-   if(user._id === doc.owner)
+          //-     button.btn.btn-danger.remove-doc(data-id=doc.doc_id, data-name=doc.name) remove

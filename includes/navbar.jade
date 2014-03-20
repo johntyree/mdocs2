@@ -1,0 +1,41 @@
+- var title = 'mdocs';
+
+mixin menu(menuTitle, url, tooltip, icon)
+  li.menu-button(data-menu-route=url)
+    a(href=url, title=tooltip)
+      if icon
+        i.fa(class=icon)
+      |  #{menuTitle}
+
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+
+
+      a.brand(href="/")
+        strong m
+        | docs
+
+
+      a.btn.btn-navbar.pull-right(data-toggle="collapse", data-target=".nav-collapse")
+        i.icon-list.icon-white
+        span.caret
+
+        a#sign-in.sign-in.btn.btn-primary.pull-right(href="#/login")
+          i.fa.fa-sign-in
+          |  login
+
+        #signed-in
+
+      div.nav-collapse
+        ul.nav
+          +menu('New', '#/new', 'create a new document', 'fa-file-text-o')
+          +menu('My docs', '#/docs', 'open list of documents', 'fa-folder-open-o')
+
+          li.menu-button
+            a.share(href='#', title="share the current document")
+              i.fa.fa-share
+              |  Share
+
+        //- form.navbar-search.pull-left(action='/search', _lpchecked='1')
+        //-   input.search-query.span2(type='text', placeholder='Search', name='q')

@@ -1,0 +1,12 @@
+.dropdown.pull-right()
+  a.btn.dropdown-toggle(href="#", data-toggle="dropdown", role="button")
+    if profile.identities[0].isSocial
+      | #{profile.name + ' '}
+    else
+      | #{profile.name} [at #{profile.identities[0].connection + ' '}]
+    span.caret
+  ul.dropdown-menu(role="menu", aria-labelledby="dLabel")
+    li
+      a(href="#/logout")
+        span.icon-signout
+        | sign out

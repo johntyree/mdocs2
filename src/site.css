@@ -1,0 +1,8 @@
+/*html, body, .container
+  height 100% */
+.editor {
+  position: absolute;
+  top: 49px;
+  bottom: 0;
+  width: 50%;
+}
