@@ -6,7 +6,7 @@ var logged_in_tmpl = require('../includes/logged_in.jade');
 var widget = new Auth0Widget({
   domain:           'mdocs.auth0.com',
   clientID:         'TnzEhJw9ADNWAICY3vRlb7sdj9pMWcQJ',
-  callbackURL:      window.location.origin + '/',
+  callbackURL:      window.location.href.split('#')[0],
   callbackOnLocationHash: true
 });
 
