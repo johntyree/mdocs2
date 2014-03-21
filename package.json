@@ -30,5 +30,8 @@
   },
   "repository": "",
   "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "caja-sanitizer": "~0.1.2"
+  }
 }

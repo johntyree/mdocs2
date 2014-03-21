@@ -6,7 +6,7 @@ var doc_list = require('../includes/doc_list.jade');
 var Docs = require('./docs');
 
 function load () {
-  var profile = store.get('profile');
+  var profile = store.get('firepad_profile');
 
   if (!profile) {
     window.location.hash = '#/';
@@ -23,7 +23,7 @@ function load () {
 }
 
 function create_new () {
-  var profile = store.get('profile');
+  var profile = store.get('firepad_profile');
   var docs = new Docs(profile.firebase_token);
   docs.create_new(profile, function (err, docRef, id) {
     if (err) return;

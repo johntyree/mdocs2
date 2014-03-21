@@ -6,6 +6,7 @@ var store = require('store');
 var editor = require('../includes/editor.jade');
 var title_editor = require('./title_editor');
 var marked = require('marked');
+var cajaSanitizer = require('caja-sanitizer');
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -13,7 +14,7 @@ marked.setOptions({
   tables: true,
   breaks: false,
   pedantic: false,
-  sanitize: true,
+  sanitize: false,
   smartLists: true,
   smartypants: false
 });
@@ -39,18 +40,18 @@ function setup_editor (docRef) {
       .set({'can_write': true});
   });
 
-  var previous_text;
-
   codeMirror.on('change', function () {
     var text = codeMirror.getValue();
-    $('#preview').html(marked(text));
+    $('#preview').html(cajaSanitizer.sanitize(marked(text), function (url) {
+      return url;
+    }));
   });
 
   title_editor.setup(docRef);
 }
 
 function load (id) {
-  var profile = store.get('profile');
+  var profile = store.get('firepad_profile');
   var docs = new Docs(profile.firebase_token);
   $('.content').html(editor({}));
 

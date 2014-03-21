@@ -10,13 +10,13 @@ var widget = new Auth0Widget({
   callbackOnLocationHash: true
 });
 
-if (store.get('profile')) {
-  login_fin(store.get('profile'));
+if (store.get('firepad_profile')) {
+  login_fin(store.get('firepad_profile'));
 }
 
 widget.getProfile(window.location.hash, function (err, profile) {
   if (err || !profile) return;
-  store.set('profile', profile);
+  store.set('firepad_profile', profile);
   login_fin(profile);
 });
 
@@ -37,7 +37,7 @@ function login() {
 function logout () {
   $('#signed-in').hide();
   $('#sign-in').show();
-  store.remove('profile');
+  store.remove('firepad_profile');
   window.location.hash = '#/';
 }
 
