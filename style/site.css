@@ -185,7 +185,7 @@ body, html {
 }
 
 .collabs-table-wrapper {
-  overflow-y: auto; 
+  overflow-y: auto;
   height:165px;
 }
 
@@ -237,7 +237,7 @@ body, html {
 }
 
 #add-collab .typeahead a img{
-  float:       left; 
+  float:       left;
   width:       39px;
   height:      39px;
   padding-top:  2px;
@@ -252,10 +252,10 @@ input.error {
 
 .navbar-inner {
     padding: 5px;
-    height: 24px; 
-    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important; 
-    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important; 
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important; 
+    height: 24px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important;
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 0 0 1px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.25) !important;
     z-index: 500;
 }
 
@@ -274,7 +274,7 @@ input.error {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 300; 
+  font-weight: 300;
 }
 
 .CodeMirror .other-client {
@@ -288,4 +288,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .tag-list a {
   margin: 2px;
+}
+
+.firepad {
+  height: 100%;
+  cursor: text;
 }
