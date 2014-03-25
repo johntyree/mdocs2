@@ -28,6 +28,9 @@ function addCollaborator (docRef) {
           .child(window.btoa(email))
           .set({
             can_write: can_write
+          }, function (err) {
+            if (err) return console.log(err);
+            $('#new-collab').val('');
           });
 
     return false;
