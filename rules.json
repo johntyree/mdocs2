@@ -2,11 +2,11 @@
   "rules": {
     "docs": {
       "$doc": {
-        ".read":  "auth != null && data.child('owners').hasChildren([auth.user_id])",
-        ".write": "auth != null && (!data.exists() || data.child('owners').child(auth.user_id).child('can_write').val() == true)",
+        ".read":  "data.child('owners').hasChildren([auth.user_id]) || data.child('companies').hasChildren([auth.company])",
+        ".write": "!data.exists() || data.child('owners').child(auth.user_id).child('can_write').val() == true || data.child('companies').child(auth.company).val() == 'can_write'",
         "owners": {
           "$user": {
-            ".validate": "(!data.parent().exists() && $user == auth.user_id) || data.parent().child(auth.user_id).child('can_write').val() == true"
+            ".validate": "(!data.parent().exists() && $user == auth.user_id) || data.parent().child(auth.user_id).child('can_write').val() == true || data.child('companies').child(auth.company).val() == 'can_write'"
           }
         }
       }

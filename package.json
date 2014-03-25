@@ -7,7 +7,7 @@
     "marked": "~0.3.2",
     "serve": "git+https://github.com/jfromaniello/serve.git",
     "firepad": "git+https://github.com/jfromaniello/firepad.git#commonjs-support",
-    "auth0-widget.js": "~2.6.3",
+    "auth0-widget.js": "~2.6.5",
     "browserify-shim": "~3.3.1",
     "browserify": "~3.32.1",
     "browserify-middleware": "~2.4.0",
@@ -23,7 +23,8 @@
     "font-awesome": "~4.0.3",
     "watchify": "~0.6.2",
     "editable": "~0.1.0",
-    "css-import": "0.0.1"
+    "css-import": "0.0.1",
+    "caja-sanitizer": "~0.1.2"
   },
   "scripts": {
     "start": "watchify client_side/index.js -t jadeify -d -o main.js -v & serve"
@@ -31,7 +32,5 @@
   "repository": "",
   "author": "",
   "license": "BSD",
-  "dependencies": {
-    "caja-sanitizer": "~0.1.2"
-  }
+  "dependencies": { }
 }

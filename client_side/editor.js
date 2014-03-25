@@ -7,6 +7,7 @@ var editor = require('../includes/editor.jade');
 var title_editor = require('./title_editor');
 var marked = require('marked');
 var cajaSanitizer = require('caja-sanitizer');
+var share = require('./share');
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -27,17 +28,15 @@ function setup_editor (docRef) {
   var codeMirror = CodeMirror(firepadDiv[0], {
     mode: 'markdown',
     theme: require('code-mirror/theme/default'),
-    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+    extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"},
+    lineWrapping: true
   });
 
-  var firepad = Firepad.fromCodeMirror(docRef, codeMirror);
+  Firepad.fromCodeMirror(docRef, codeMirror);
 
   $('a.share').show().off('click').on('click', function (e) {
     e.preventDefault();
-    var contrib = prompt('Insert the email address of the contributor:');
-    docRef.child('owners')
-      .child(btoa(contrib))
-      .set({'can_write': true});
+    share.show(docRef);
   });
 
   codeMirror.on('change', function () {
@@ -45,6 +44,10 @@ function setup_editor (docRef) {
     $('#preview').html(cajaSanitizer.sanitize(marked(text), function (url) {
       return url;
     }));
+  });
+
+  docRef.once('value', function (s) {
+    console.log(s.val());
   });
 
   title_editor.setup(docRef);

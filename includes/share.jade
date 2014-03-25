@@ -1,0 +1,30 @@
+#settings-popup.form-horizontal.modal.hide.fade(tabindex="-1")
+  .modal-header
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h3 share
+  .modal-body(style='max-height: 480px;')
+    form.form-horizontal
+      .control-group
+        label.control-label(for='doc-url') URL
+        .controls
+          .input-append
+            input.input-xxlarge#doc-url(type='text', value=url, readonly)
+            button.btn.copy-btn(type='button',
+                                data-clipboard-target='doc-url')
+              i.fa.fa-files-o
+
+    table#visibility-table.table.permissions-table
+
+    h4 Collaborators
+    .collabs-table-wrapper
+      table#collabs-table.table.permissions-table
+
+    form#add-collab.form-inline
+      input.input#new-collab(type='text', placeholder='email', required)
+      select.input-small#new-collab-type
+        option(value="can_write") can edit
+        option(value="can_view") can view
+      button.btn(type='submit') Add
+
+  .modal-footer
+    button.btn(data-dismiss="modal", aria-hidden="true") Close

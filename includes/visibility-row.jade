@@ -1,0 +1,41 @@
+tr(data-level=d.level || d.company)
+  td(style='width: 15px;')
+    if d.level == 'public'
+      i.icon-globe
+    else
+      i.icon-building
+  td(style='width: 310px;')= d.title
+    br
+    if d.level == 'public'
+      | Anyone on the web
+    else
+      | People at #{d.company}
+    br
+    small
+      if d.type == 'none'
+        | Only the people listed below can access
+      else
+        if d.level == 'public'
+          | Anyone with the link #{d.type}
+        else
+          | Only people at #{d.company}
+          if d.type === 'can_write'
+            |  can edit
+          else if d.type === 'can_read'
+            |  can view
+  td
+    .dropdown
+      a.dropdown-toggle.edit-visibility-dd(role='button', data-toggle='dropdown', href='#')
+        if d.type == 'none'
+          | change...
+        else if d.type === 'can_write'
+          | can edit
+        else if d.type === 'can_read'
+          | can view
+      ul.dropdown-menu(role='menu', aria-labelledby='drop4')
+        li
+          a.change-level(tabindex='-1', href='#', data-type='can_read') can view
+        li
+          a.change-level(tabindex='-1', href='#', data-type='can_write') can edit
+        li
+          a.change-level(tabindex='-1', href='#', data-type='none') none

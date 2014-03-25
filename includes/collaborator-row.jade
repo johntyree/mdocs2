@@ -1,0 +1,17 @@
+tr(data-email=email)
+  td
+    strong=email
+
+  td
+    .dropdown
+      a.dropdown-toggle.edit-permissions-dd(role='button', data-toggle='dropdown', href='#')
+        | #{can_write ? 'can edit' : 'can view'}
+      ul.dropdown-menu(role='menu', aria-labelledby='drop4')
+        li
+          a.can-view-option(tabindex='-1', href='#') can view
+        li
+          a.can-write-option(tabindex='-1', href='#') can edit
+
+  td
+    a.btn-mini.remove-collab.btn.btn-danger(href='#')
+      i.fa.fa-times
