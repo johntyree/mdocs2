@@ -26,6 +26,14 @@ function login_fin(profile) {
   }));
   $('#sign-in').hide();
   if (!window.location.hash || window.location.hash.indexOf('#access_token') === 0) {
+    var return_url = store.get('return_url_after_login');
+
+    if (return_url) {
+      store.remove('return_url_after_login');
+      window.location = return_url;
+      return;
+    }
+
     window.location.hash = '#/docs';
   }
 }

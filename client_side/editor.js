@@ -8,6 +8,7 @@ var title_editor = require('./title_editor');
 var marked = require('marked');
 var cajaSanitizer = require('caja-sanitizer');
 var share = require('./share');
+var noPermissions = require('../includes/no-permissions.jade');
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -46,8 +47,8 @@ function setup_editor (docRef) {
     }));
   });
 
-  docRef.once('value', function (s) {
-    console.log(s.val());
+  docRef.on('value', function () {}, function (s) {
+    $('.content').html(noPermissions());
   });
 
   title_editor.setup(docRef);
@@ -59,7 +60,7 @@ function load (id) {
   $('.content').html(editor({}));
 
   docs.get_doc(profile, id, function (err, docRef) {
-    if (err) throw err;
+    if (err) { throw err; }
     setup_editor(docRef);
   });
 }
