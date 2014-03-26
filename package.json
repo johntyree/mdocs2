@@ -7,7 +7,7 @@
     "marked": "~0.3.2",
     "serve": "git+https://github.com/jfromaniello/serve.git",
     "firepad": "git+https://github.com/jfromaniello/firepad.git#commonjs-support",
-    "auth0-widget.js": "~2.6.5",
+    "auth0-widget.js": "~2.6.8",
     "browserify-shim": "~3.3.1",
     "browserify": "~3.32.1",
     "browserify-middleware": "~2.4.0",
