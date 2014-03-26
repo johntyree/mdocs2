@@ -115,8 +115,13 @@ body, html {
   font-size: 13px
 }
 
-.input-title input {
+.editable input[type=text] {
   font-size: 38.5px;
+  width: 100%;
+  height: 40px;
+}
+.editable input[type=submit] {
+  display: none;
 }
 
 .permissions-dd {
