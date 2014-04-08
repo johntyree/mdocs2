@@ -14,11 +14,17 @@ if (store.get('firepad_profile')) {
   login_fin(store.get('firepad_profile'));
 }
 
-widget.getProfile(window.location.hash, function (err, profile) {
-  if (err || !profile) return;
-  store.set('firepad_profile', profile);
-  login_fin(profile);
-});
+var result = widget.parseHash(location.hash);
+if (result) {
+  widget.getProfile(result.id_token, function (err, profile) {
+    if (err || !profile) return;
+    widget.getClient().getDelegationToken('bzj2zx2pENhu4UcoKKNGNwYz7mZ2NaDC', result.id_token, {}, function (err, delegationResult) {
+      profile.firebase_token = delegationResult.id_token;
+      store.set('firepad_profile', profile);
+      login_fin(profile);
+    });
+  });
+}
 
 function login_fin(profile) {
   $('#signed-in').html(logged_in_tmpl({
@@ -39,7 +45,7 @@ function login_fin(profile) {
 }
 
 function login() {
-  widget.signin();
+  widget.signin({scope: 'openid profile'});
 }
 
 function logout () {
